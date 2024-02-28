@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
 
 private float horizontalInput;
 private float verticalInput;
-private float speed = 10.0f;
+public float speed = 10.0f;
 private Rigidbody2D rb;
 // below is a diagram for direction
 // ACTUALLY NEVER MIND LETS NOT USE THAT
@@ -29,7 +29,7 @@ void Update()
 }
 
 
-void FixedUpdate(){
+void LateUpdate(){
         rb.AddForce(new Vector3(horizontalInput, verticalInput, 0.0f) * speed);
     }
 }

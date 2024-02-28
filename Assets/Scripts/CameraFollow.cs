@@ -11,12 +11,15 @@ public class CameraFollow : MonoBehaviour
     }
 
     public Transform target;
+ 
     public float height = 0;
-    public Vector3 offset = new Vector3(3, 0, -20);
-    public float smoothTime = 0.25f;
+    public Vector3 offset = new Vector3(0, 4, -20); // moeves camera back
+    public float smoothTime = 0.25f;  
+    // time it takes for camera to catch up to player
+
     private Vector3 currentVelocity = Vector3.zero;
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
         Vector3 destination = target.position + offset;
         destination.y = height; // stops camera from moving on y axis
@@ -26,7 +29,7 @@ public class CameraFollow : MonoBehaviour
             destination,  // updates camera along x axis only
             ref currentVelocity,
             smoothTime
-        );
+        ); 
         
     }
 }
