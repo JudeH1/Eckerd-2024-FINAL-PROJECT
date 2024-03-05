@@ -1,4 +1,0 @@
-repository "project@WalrusFork@cloud"
-  path "/"
-    br "/main"
-    co "/main"
