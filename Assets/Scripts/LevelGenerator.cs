@@ -18,6 +18,12 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform Grid8;
     [SerializeField] private Transform Grid9;
 
+    [SerializeField] private Transform Part1;
+    [SerializeField] private Transform Part2;
+    [SerializeField] private Transform Part3;
+    [SerializeField] private Transform Part4;
+    [SerializeField] private Transform Part5;
+
     
 
 
@@ -31,11 +37,17 @@ public class LevelGenerator : MonoBehaviour
     private List<Transform> bottomstart = new List<Transform>();
     private List<Transform> middlestart = new List<Transform>();
     private List<Transform> topstart = new List<Transform>();
+    private List<Transform> levelPartList = new List<Transform>();
 
 
     private int count = 0;
     private void Awake() {
 
+        levelPartList.Add(Part1);
+        levelPartList.Add(Part2);
+        levelPartList.Add(Part3);
+        levelPartList.Add(Part4);
+        levelPartList.Add(Part5);
 
 
         bottomstart.Add(Grid2);
@@ -53,39 +65,60 @@ public class LevelGenerator : MonoBehaviour
         topstart.Add(Grid9);
 
         count += 14;
+        LevelFiller(new Vector3(count, 0));
         SpawnLevelPart(new Vector3(count, 0));
         count += 14;
         SpawnLevelPart(new Vector3(count, 0));
+        LevelFiller(new Vector3(count, 0));
         count += 14;
         SpawnLevelPart(new Vector3(count, 0));
+        LevelFiller(new Vector3(count, 0));
         count += 14;
         SpawnLevelPart(new Vector3(count, 0));
+        LevelFiller(new Vector3(count, 0));
         count += 14;
         SpawnLevelPart(new Vector3(count, 0));
+        LevelFiller(new Vector3(count, 0));
     }
     
     private void Update() {
         if ((count - target.transform.position.x) < PLAYER_DISTANCE_SPAWN) {
             count += 14;
             SpawnLevelPart(new Vector3(count, 0));
+            LevelFiller(new Vector3(count, 0));
         }
     }
 
     private void SpawnLevelPart(Vector3 spawnPosition){
         if (exitPosition == 0) {
-            int randomChoice = Random.Range(0, 2);
+            int randomChoice = Random.Range(0, 3);
             Instantiate(bottomstart[randomChoice], spawnPosition, Quaternion.identity);
             exitPosition = randomChoice; //position of chosen in list
         }
         else if (exitPosition == 1) {
-            int randomChoice = Random.Range(0, 2);
+            int randomChoice = Random.Range(0, 3);
             Instantiate(middlestart[randomChoice], spawnPosition, Quaternion.identity);
             exitPosition = randomChoice; //position of chosen
         }
         else if (exitPosition == 2) {
-            int randomChoice = Random.Range(0, 2);
+            int randomChoice = Random.Range(0, 3);
             Instantiate(topstart[randomChoice], spawnPosition, Quaternion.identity);
             exitPosition = randomChoice; //position of chosen
         }
+    }
+
+    // the below code fills the level with obstacles randomly
+    // probably need to update it so there's no duplicates
+    private void LevelFiller(Vector3 spawnPosition){
+        int listCount = 0;
+        for (listCount = 0; listCount < 5; listCount++)
+        {
+        float randomChoice2 = Random.Range(0.0f, 1.0f);
+        int randomChoice3 = Random.Range(0, 5);
+        if (randomChoice2 > 0.33) {
+            Instantiate(levelPartList[randomChoice3], spawnPosition, Quaternion.identity);
+        }
+        }
+
     }
 }

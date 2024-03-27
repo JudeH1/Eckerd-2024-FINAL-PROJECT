@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1011447743}
   height: 0
-  offset: {x: 0, y: 4, z: -20}
+  offset: {x: 7, y: 4, z: -20}
   smoothTime: 0.25
 --- !u!1 &576598120
 GameObject:
@@ -270,6 +270,11 @@ MonoBehaviour:
   Grid7: {fileID: 5036767919226680234, guid: 839e98ef7c4079a4b9756190e982729e, type: 3}
   Grid8: {fileID: 5036767919226680234, guid: 0db242d2f33d0484f9f3fbf459b664aa, type: 3}
   Grid9: {fileID: 5036767919226680234, guid: 87e15dd846673d54cb7730ffd310bcb3, type: 3}
+  Part1: {fileID: 5036767919226680234, guid: f93cb0589673ad8489b84ec46b0212bc, type: 3}
+  Part2: {fileID: 5036767919226680234, guid: e40a394c5519363489741869eb38b76d, type: 3}
+  Part3: {fileID: 5036767919226680234, guid: 7cd8c18d6d5a3ea49ae9af0683ea71bc, type: 3}
+  Part4: {fileID: 5036767919226680234, guid: 20eff46950bca724aabc4bb5d37373ab, type: 3}
+  Part5: {fileID: 5036767919226680234, guid: 8a0079981e3dd1d47be76eba43008c0c, type: 3}
   target: {fileID: 1011447743}
 --- !u!4 &576598122
 Transform:
