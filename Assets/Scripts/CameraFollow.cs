@@ -13,7 +13,7 @@ public class CameraFollow : MonoBehaviour
     public Transform target;
  
     public float height = 0;
-    public Vector3 offset = new Vector3(0, 4, -20); // moeves camera back
+    public Vector3 offset = new Vector3(0, 4, -20); // for some reason the offset isn't working, gotta check this later
     public float smoothTime = 0.25f;  
     // time it takes for camera to catch up to player
 
