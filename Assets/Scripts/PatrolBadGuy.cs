@@ -30,6 +30,10 @@ public class PatrolBadGuy : MonoBehaviour
     bool currentlyColliding;
 
     private Quaternion targetRotation;
+    public float angleOne;
+    public float angleTwo;
+    private Quaternion targetAngleOne = Quaternion.Euler(0, 0, 0);
+    private Quaternion targetAngleTwo = Quaternion.Euler(0, 0, 0);
 
     public LayerMask Target;
     public LayerMask Wall;
@@ -47,6 +51,8 @@ public class PatrolBadGuy : MonoBehaviour
 
     void Start()
     {
+        targetAngleOne = Quaternion.Euler(0, 0, angleOne);
+        targetAngleTwo = Quaternion.Euler(0, 0, angleTwo);
         targetRotation = transform.rotation;
         rb2d = GetComponent<Rigidbody2D>();
         state = State.Move;
@@ -66,20 +72,28 @@ public class PatrolBadGuy : MonoBehaviour
                 if (currentlyColliding)
                 {
                     rotateCount = 0;
+                    changeAngle();
                     state = State.Turn;
                 }
                 transform.position +=  transform.up * Time.deltaTime * moveSpeed;
                 break;
             case State.Turn:  
-                while (rotateCount * Time.deltaTime < 180)
-                {
-                    rotateCount++;
-                    transform.Rotate (new Vector3 (0, 0, Time.deltaTime)); // ideally this should be a smooth rotation but for the life of me i cant get that
-                }
+                //while (rotateCount * Time.deltaTime < 180)
+              //  {
+                  //  rotateCount++;
+                   // Debug.Log("hello");
+                    //transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, Time.deltaTime);
+               // }
+                //float angle
 
-                if (rotateCount * Time.deltaTime >= 180)
+               // if (rotateCount * Time.deltaTime >= 180)
+               // {
+               // state = State.Move; // once this is made smooth its important it stays in the turn state until it's finished turning
+                //}
+                transform.rotation = Quaternion.RotateTowards (transform.rotation, targetRotation, 0.5f);
+                if (targetRotation.eulerAngles.z == transform.rotation.eulerAngles.z)
                 {
-                state = State.Move; // once this is made smooth its important it stays in the turn state until it's finished turning
+                    state = State.Move;
                 }
                 break;
             case State.ChasePlayer:
@@ -100,6 +114,18 @@ public class PatrolBadGuy : MonoBehaviour
 
         }
 
+    }
+
+    void changeAngle()
+    {
+        if(targetRotation.eulerAngles.z==targetAngleOne.eulerAngles.z)
+        {
+            targetRotation = targetAngleTwo;
+        }
+        else
+        {
+            targetRotation = targetAngleOne;
+        }
     }
 
     bool locatePlayer()
