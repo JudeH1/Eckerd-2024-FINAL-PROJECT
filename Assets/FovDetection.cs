@@ -1,27 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
-class WorkingDetection : MonoBehaviour
+public class FovDetection : MonoBehaviour
 {
     public Transform player;
 
     public float viewRadius;
+
     public float viewAngle;
+
     public float moveSpeed;
+
     public float rotateSpeed;
+
     public float rotationModifier;
-    private float timer;
 
     public LayerMask Target;
     public LayerMask Wall;
 
     private Rigidbody2D rb2d;
-
-    public Projectile bullet;
-    public Transform bulletLaunchPos;
 
     void Start()
     {
@@ -31,10 +30,9 @@ class WorkingDetection : MonoBehaviour
 
     void Update()
     {
-        if (LocatePlayer())
+        if (locatePlayer())
         {
             ChasePlayer();
-            Shoot();
         }
         else
         {
@@ -42,7 +40,7 @@ class WorkingDetection : MonoBehaviour
         }
     }
 
-    bool LocatePlayer()
+    bool locatePlayer()
     {
         Collider2D playerInRadius = Physics2D.OverlapCircle(transform.position, viewRadius, Target);
 
@@ -66,8 +64,6 @@ class WorkingDetection : MonoBehaviour
         }
         return false;
     }
-
-    
     void ChasePlayer()
     {
         float step = moveSpeed * Time.deltaTime;
@@ -81,17 +77,5 @@ class WorkingDetection : MonoBehaviour
     void StopChasingPlayer()
     {
         rb2d.velocity = new Vector2(0, 0);
-    }
-
-
-    void Shoot()
-    {
-        timer += Time.deltaTime;
-
-        if (timer > 1)
-        {
-            timer = 0;
-            Instantiate(bullet, bulletLaunchPos.position, Quaternion.identity);
-        }
     }
 }
