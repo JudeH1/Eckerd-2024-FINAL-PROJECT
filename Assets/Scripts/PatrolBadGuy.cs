@@ -27,6 +27,8 @@ public class PatrolBadGuy : MonoBehaviour
 
     private float rotateCount = 0; 
 
+    private float timer;
+
     bool currentlyColliding;
 
     private Quaternion targetRotation;
@@ -40,11 +42,14 @@ public class PatrolBadGuy : MonoBehaviour
 
     private Rigidbody2D rb2d;
 
+    public Projectile bullet;
+    public Transform bulletLaunchPos;
+
     private enum State {
         Move,
         Turn,
         ChasePlayer,
-        StopChasingPlayer,
+        StopChasingPlayer
     }
 
     private State state;
@@ -71,6 +76,7 @@ public class PatrolBadGuy : MonoBehaviour
                 //step forward
                 if (currentlyColliding)
                 {
+                    Debug.Log("i want to die");
                     rotateCount = 0;
                     changeAngle();
                     state = State.Turn;
@@ -106,7 +112,11 @@ public class PatrolBadGuy : MonoBehaviour
                 Vector3 directionToPlayer = (player.position - transform.position);
                 float angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
                 rb2d.rotation = angleToPlayer-90;
+                //Shoot(); commented this out for now
                 break;
+
+        
+
             case State.StopChasingPlayer:
                 rb2d.velocity = new Vector2(0, 0);
                 state = State.Move;
@@ -184,6 +194,18 @@ public class PatrolBadGuy : MonoBehaviour
         //step forward
         transform.position += transform.up * Time.deltaTime * moveSpeed;
     }
+
+    void Shoot()
+    {
+        timer += Time.deltaTime;
+
+        if (timer > 1)
+        {
+            timer = 0;
+            Instantiate(bullet, bulletLaunchPos.position, Quaternion.identity);
+        }
+    }
+
 
     //void Rotate()
    // {
