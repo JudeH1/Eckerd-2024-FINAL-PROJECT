@@ -10,9 +10,11 @@ public class CameraFollow : MonoBehaviour
         
     }
 
+    
     public Transform target;
  
     public float height = 0;
+    public float stop = 0;
     public Vector3 offset = new Vector3(0, 4, -20); // for some reason the offset isn't working, gotta check this later
     public float smoothTime = 0.25f;  
     // time it takes for camera to catch up to player
@@ -23,13 +25,15 @@ public class CameraFollow : MonoBehaviour
     {
         Vector3 destination = target.position + offset;
         destination.y = height; // stops camera from moving on y axis
-        transform.position = Vector3.SmoothDamp( 
+       // if (transform.position.x - target.position.x < 0) { // doesn't follow player backwards
+            transform.position = Vector3.SmoothDamp( 
              // updates camera so it follows player on x axis
             transform.position,
             destination,  // updates camera along x axis only
             ref currentVelocity,
             smoothTime
         ); 
-        
+       // }
+        Debug.Log(target.position.x);
     }
 }

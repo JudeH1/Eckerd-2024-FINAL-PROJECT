@@ -24,6 +24,8 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform Part4;
     [SerializeField] private Transform Part5;
 
+
+    [SerializeField] private Transform CoinGrid;
     
 
 
@@ -92,16 +94,19 @@ public class LevelGenerator : MonoBehaviour
     private void SpawnLevelPart(Vector3 spawnPosition){
         if (exitPosition == 0) {
             int randomChoice = Random.Range(0, 3);
+            Instantiate(CoinGrid, spawnPosition, Quaternion.identity);
             Instantiate(bottomstart[randomChoice], spawnPosition, Quaternion.identity);
             exitPosition = randomChoice; //position of chosen in list
         }
         else if (exitPosition == 1) {
             int randomChoice = Random.Range(0, 3);
+            Instantiate(CoinGrid, spawnPosition, Quaternion.identity);
             Instantiate(middlestart[randomChoice], spawnPosition, Quaternion.identity);
             exitPosition = randomChoice; //position of chosen
         }
         else if (exitPosition == 2) {
             int randomChoice = Random.Range(0, 3);
+            Instantiate(CoinGrid, spawnPosition, Quaternion.identity);
             Instantiate(topstart[randomChoice], spawnPosition, Quaternion.identity);
             exitPosition = randomChoice; //position of chosen
         }

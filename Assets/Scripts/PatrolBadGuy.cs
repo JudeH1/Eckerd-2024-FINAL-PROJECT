@@ -9,7 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class PatrolBadGuy : MonoBehaviour
 {
-    public Transform player;
+    public GameObject player;
 
     public float viewRadius;
 
@@ -56,6 +56,7 @@ public class PatrolBadGuy : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
         targetAngleOne = Quaternion.Euler(0, 0, angleOne);
         targetAngleTwo = Quaternion.Euler(0, 0, angleTwo);
         targetRotation = transform.rotation;
@@ -76,7 +77,7 @@ public class PatrolBadGuy : MonoBehaviour
                 //step forward
                 if (currentlyColliding)
                 {
-                    Debug.Log("i want to die");
+                    //Debug.Log("i want to die");
                     rotateCount = 0;
                     changeAngle();
                     state = State.Turn;
@@ -108,8 +109,8 @@ public class PatrolBadGuy : MonoBehaviour
                     state = State.StopChasingPlayer;
                 }
                 float step = moveSpeed * Time.deltaTime;
-                transform.position = Vector2.MoveTowards(transform.position, player.position, step);
-                Vector3 directionToPlayer = (player.position - transform.position);
+                transform.position = Vector2.MoveTowards(transform.position, player.transform.position, step);
+                Vector3 directionToPlayer = (player.transform.position - transform.position);
                 float angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
                 rb2d.rotation = angleToPlayer-90;
                 //Shoot(); commented this out for now
@@ -167,8 +168,8 @@ public class PatrolBadGuy : MonoBehaviour
     void ChasePlayer()
     {
         float step = moveSpeed * Time.deltaTime;
-        transform.position = Vector2.MoveTowards(transform.position, player.position, step);
-        Vector3 directionToPlayer = (player.position - transform.position);
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, step);
+        Vector3 directionToPlayer = (player.transform.position - transform.position);
         float angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
         rb2d.rotation = angleToPlayer-90;
     }
@@ -181,12 +182,16 @@ public class PatrolBadGuy : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision) // might need to change to be for walls only
     {
-      currentlyColliding = true;
+      if (collision.gameObject.CompareTag("Wall")){
+        currentlyColliding = true;
+      }
     }
 
     void OnTriggerExit2D(Collider2D collision) // might need to change to be for walls only
     {
-      currentlyColliding = false;
+      if (collision.gameObject.CompareTag("Wall")){
+        currentlyColliding = false;
+      }
     }
     
 
