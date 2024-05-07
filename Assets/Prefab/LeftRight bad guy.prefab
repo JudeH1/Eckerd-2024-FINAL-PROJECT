@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3691193043121795969}
   - component: {fileID: 2826894906900328458}
   m_Layer: 0
-  m_Name: UpdatedBadGuy
+  m_Name: LeftRight bad guy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,8 +29,8 @@ Transform:
   m_GameObject: {fileID: 1592065295409992993}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: 0.7071068, w: -0.7071068}
-  m_LocalPosition: {x: -2.35, y: -0.94, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8644676853549057758}

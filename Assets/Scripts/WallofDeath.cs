@@ -9,11 +9,13 @@ public class WallofDeath : MonoBehaviour
     public float baseSpeed = 1.0f;
     public float speed = 0f;
     public GameObject player;
+    private HealthManager health;
 
     // Start is called before the first frame update
     void Start()
     {
         player =  GameObject.FindGameObjectWithTag("Player");
+        health = player.GetComponent<HealthManager>();
     }
 
     // Update is called once per frame
@@ -38,5 +40,13 @@ public class WallofDeath : MonoBehaviour
             speed = 0;
         }
 
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            health.TakeDamage(9999); //like to die instantly
+        }
     }
 }

@@ -24,6 +24,9 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform Part4;
     [SerializeField] private Transform Part5;
 
+    [SerializeField] private Transform Enemy1;
+    [SerializeField] private Transform Enemy2;
+
 
     [SerializeField] private Transform CoinGrid;
     
@@ -40,6 +43,14 @@ public class LevelGenerator : MonoBehaviour
     private List<Transform> middlestart = new List<Transform>();
     private List<Transform> topstart = new List<Transform>();
     private List<Transform> levelPartList = new List<Transform>();
+    private List<Transform> enemyList = new List<Transform>();
+    private List<Vector3> enemyPlacementList = new List<Vector3>() {new Vector3(-5, 2), new Vector3(-5, -2), new Vector3(-2, 3), 
+    new Vector3(-2, -3), new Vector3(2, 3), new Vector3(2, -3), new Vector3(5, 2), new Vector3(5, -2)};
+    // below spawns enemies, maximum of 8, all in predetermined places as shown in the maxgrid
+        // valid locations relative to spawn: (x then y)
+        // -5, 2    -2, 3       2, 3,   5, 2 
+        // -5,-2    -2, -3      2, -3   5, -2
+
 
 
     private int count = 0;
@@ -66,21 +77,29 @@ public class LevelGenerator : MonoBehaviour
         topstart.Add(Grid8);
         topstart.Add(Grid9);
 
-        count += 14;
-        LevelFiller(new Vector3(count, 0));
-        SpawnLevelPart(new Vector3(count, 0));
-        count += 14;
-        SpawnLevelPart(new Vector3(count, 0));
-        LevelFiller(new Vector3(count, 0));
+        enemyList.Add(Enemy1);
+        enemyList.Add(Enemy2);
+
         count += 14;
         SpawnLevelPart(new Vector3(count, 0));
         LevelFiller(new Vector3(count, 0));
+        enemyFiller(new Vector3(count, 0));
         count += 14;
         SpawnLevelPart(new Vector3(count, 0));
         LevelFiller(new Vector3(count, 0));
+        enemyFiller(new Vector3(count, 0));
         count += 14;
         SpawnLevelPart(new Vector3(count, 0));
         LevelFiller(new Vector3(count, 0));
+        enemyFiller(new Vector3(count, 0));
+        count += 14;
+        SpawnLevelPart(new Vector3(count, 0));
+        LevelFiller(new Vector3(count, 0));
+        enemyFiller(new Vector3(count, 0));
+        count += 14;
+        SpawnLevelPart(new Vector3(count, 0));
+        LevelFiller(new Vector3(count, 0));
+        enemyFiller(new Vector3(count, 0));
     }
     
     private void Update() {
@@ -88,6 +107,7 @@ public class LevelGenerator : MonoBehaviour
             count += 14;
             SpawnLevelPart(new Vector3(count, 0));
             LevelFiller(new Vector3(count, 0));
+            enemyFiller(new Vector3(count, 0));
         }
     }
 
@@ -114,14 +134,34 @@ public class LevelGenerator : MonoBehaviour
 
     // the below code fills the level with obstacles randomly
     // probably need to update it so there's no duplicates
+    // both of these will scale with score once score is implemented
     private void LevelFiller(Vector3 spawnPosition){
         int listCount = 0;
         for (listCount = 0; listCount < 5; listCount++)
         {
         float randomChoice2 = Random.Range(0.0f, 1.0f);
-        int randomChoice3 = Random.Range(0, 5);
+       // int randomChoice3 = Random.Range(0, 5);
         if (randomChoice2 > 0.33) {
-            Instantiate(levelPartList[randomChoice3], spawnPosition, Quaternion.identity);
+            Instantiate(levelPartList[listCount], spawnPosition, Quaternion.identity);
+        }
+        }
+    }
+    
+    private void enemyFiller(Vector3 spawnPosition){
+
+        // below spawns enemies, maximum of 8, all in predetermined places as shown in the maxgrid
+        // valid locations relative to spawn: (x then y)
+        // -5, 2    -2, 3       2, 3,   5, 2 
+        // -5,-2    -2, -3      2, -3   5, -2
+
+
+        int listCount2 = 0;
+        for (listCount2 = 0; listCount2 < 8; listCount2++)
+        {
+        float randomChoice2 = Random.Range(0.0f, 1.0f);
+        int randomChoice3 = Random.Range(0, 2);
+        if (randomChoice2 > 0.33) {
+            Instantiate(enemyList[randomChoice3], (spawnPosition + enemyPlacementList[listCount2]), Quaternion.identity);
         }
         }
 

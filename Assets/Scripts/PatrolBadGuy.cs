@@ -43,6 +43,7 @@ public class PatrolBadGuy : MonoBehaviour
     private Rigidbody2D rb2d;
 
     public Projectile bullet;
+    private HealthManager health;
     public Transform bulletLaunchPos;
 
     private enum State {
@@ -57,6 +58,7 @@ public class PatrolBadGuy : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player");
+        health = player.GetComponent<HealthManager>();
         targetAngleOne = Quaternion.Euler(0, 0, angleOne);
         targetAngleTwo = Quaternion.Euler(0, 0, angleTwo);
         targetRotation = transform.rotation;
@@ -184,6 +186,10 @@ public class PatrolBadGuy : MonoBehaviour
     {
       if (collision.gameObject.CompareTag("Wall")){
         currentlyColliding = true;
+      }
+      if (collision.gameObject.CompareTag("Player"))
+      {
+        health.TakeDamage(1); //hopefully this doesnt repeat, might need to give player invulnerability period anyways
       }
     }
 
