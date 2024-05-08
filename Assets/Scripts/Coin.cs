@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    private GameObject player;
+    private ScoreManager score;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.FindGameObjectWithTag("Player");
+        score = player.GetComponent<ScoreManager>();
     }
 
     // Update is called once per frame
@@ -20,8 +24,8 @@ public class Coin : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            // increase score once score is implemented
             Destroy(gameObject);
+            score.UpdateScore(1);
         }
         if (other.gameObject.CompareTag("Wall"))
         {

@@ -72,7 +72,7 @@ public class PatrolBadGuy : MonoBehaviour
         switch (state) {
            // default:
             case State.Move:
-                if (locatePlayer())
+                if (LocatePlayer())
                 {
                     state = State.ChasePlayer;
                 }
@@ -81,7 +81,7 @@ public class PatrolBadGuy : MonoBehaviour
                 {
                     //Debug.Log("i want to die");
                     rotateCount = 0;
-                    changeAngle();
+                    ChangeAngle();
                     state = State.Turn;
                 }
                 transform.position +=  transform.up * Time.deltaTime * moveSpeed;
@@ -106,7 +106,7 @@ public class PatrolBadGuy : MonoBehaviour
                 }
                 break;
             case State.ChasePlayer:
-                if (!(locatePlayer()))
+                if (!LocatePlayer())
                 {
                     state = State.StopChasingPlayer;
                 }
@@ -129,7 +129,7 @@ public class PatrolBadGuy : MonoBehaviour
 
     }
 
-    void changeAngle()
+    void ChangeAngle()
     {
         if(targetRotation.eulerAngles.z==targetAngleOne.eulerAngles.z)
         {
@@ -141,7 +141,7 @@ public class PatrolBadGuy : MonoBehaviour
         }
     }
 
-    bool locatePlayer()
+    bool LocatePlayer()
     {
         Collider2D playerInRadius = Physics2D.OverlapCircle(transform.position, viewRadius, Target);
 
