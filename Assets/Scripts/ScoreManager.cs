@@ -5,6 +5,8 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     public int currentScore;
+    public int finalScore;
+    public int maxScore = 999; 
     // Start is called before the first frame update
     void Start()
     {
@@ -14,10 +16,19 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentScore > 998)
+        {
+            currentScore = 999;
+        }
     }
     public void UpdateScore(int score)
     {
         currentScore += score;
+    }
+
+    public void ResetScore(int score)
+    {
+        finalScore += currentScore;
+        currentScore = 0;
     }
 }

@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
 
 private float horizontalInput;
+private HealthManager health;
 private float verticalInput;
 public float speed = 10.0f;
 private Rigidbody2D rb;
@@ -19,7 +20,18 @@ void Start ()
 {
    rb = GetComponent<Rigidbody2D>();
    gameObject.tag = "Player";
+   health = GetComponent<HealthManager>();
 }
+
+void OnCollisionEnter2D(Collision2D other)
+    {
+       if (other.gameObject.CompareTag("Wall"))
+        {
+            health.TakeDamage(1); // walls hurt now
+            Debug.Log("pingas");
+        }
+    }
+
 
 void Update()
 {

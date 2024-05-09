@@ -34,6 +34,6 @@ public class CameraFollow : MonoBehaviour
             smoothTime
         ); 
        // }
-        Debug.Log(target.position.x);
+       // Debug.Log(target.position.x);
     }
 }

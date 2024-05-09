@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LevelGenerator : MonoBehaviour
 {
-
+    private ScoreManager score;
     // this variable is used for determining when to spawn new terrain
     private const float PLAYER_DISTANCE_SPAWN = 56;
 
@@ -31,7 +31,7 @@ public class LevelGenerator : MonoBehaviour
     [SerializeField] private Transform CoinGrid;
     
 
-
+    private GameObject player;
 
     // 0 = bottom, 1 = middle, 2 = top
 
@@ -55,6 +55,9 @@ public class LevelGenerator : MonoBehaviour
 
     private int count = 0;
     private void Awake() {
+       // GameObject.Find("ScoreDisplay").GetComponent<ScoreManager>().currentScore;
+        player =  GameObject.FindGameObjectWithTag("Player");
+        score = player.GetComponent<ScoreManager>();
 
         levelPartList.Add(Part1);
         levelPartList.Add(Part2);
@@ -141,8 +144,10 @@ public class LevelGenerator : MonoBehaviour
         {
         float randomChoice2 = Random.Range(0.0f, 1.0f);
        // int randomChoice3 = Random.Range(0, 5);
-        if (randomChoice2 > 0.33) {
+        
+        if (randomChoice2 > (0.33 + 0.5 * (score.currentScore/999))) {
             Instantiate(levelPartList[listCount], spawnPosition, Quaternion.identity);
+            Debug.Log(0.33 + 0.5 * (score.currentScore/999));
         }
         }
     }
@@ -160,7 +165,7 @@ public class LevelGenerator : MonoBehaviour
         {
         float randomChoice2 = Random.Range(0.0f, 1.0f);
         int randomChoice3 = Random.Range(0, 2);
-        if (randomChoice2 > 0.33) {
+        if (randomChoice2 > (0.33 + 0.5 * (score.currentScore/999))) {
             Instantiate(enemyList[randomChoice3], (spawnPosition + enemyPlacementList[listCount2]), Quaternion.identity);
         }
         }
