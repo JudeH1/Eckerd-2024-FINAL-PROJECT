@@ -75,6 +75,7 @@ class WorkingDetection : MonoBehaviour
         Vector3 directionToPlayer = (player.position - transform.position);
         float angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
         rb2d.rotation = angleToPlayer-90;
+        Debug.Log(rb2d.rotation);
     }
 
 

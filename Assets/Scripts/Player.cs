@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
 
+private bool isFacingRight;
 private float horizontalInput;
 private HealthManager health;
 private float verticalInput;
@@ -18,6 +19,7 @@ private Rigidbody2D rb;
 
 void Start ()
 {
+   isFacingRight = true;
    rb = GetComponent<Rigidbody2D>();
    gameObject.tag = "Player";
    health = GetComponent<HealthManager>();
@@ -28,16 +30,24 @@ void OnCollisionEnter2D(Collision2D other)
        if (other.gameObject.CompareTag("Wall"))
         {
             health.TakeDamage(1); // walls hurt now
-            Debug.Log("pingas");
+            //Debug.Log("pingas");
         }
     }
 
 
 void Update()
 {
-   horizontalInput = Input.GetAxis("Horizontal");
-   verticalInput = Input.GetAxis("Vertical");
-
+    horizontalInput = Input.GetAxis("Horizontal");
+    verticalInput = Input.GetAxis("Vertical");
+    Debug.Log(horizontalInput);
+    if (!isFacingRight && horizontalInput > 0)
+    {
+        Flip();
+    }
+    else if (isFacingRight && horizontalInput < 0)
+    {
+        Flip();
+    }
    
 }
 
@@ -45,6 +55,15 @@ void Update()
 void LateUpdate(){
         rb.AddForce(new Vector3(horizontalInput, verticalInput, 0.0f) * speed);
     }
+
+public void Flip()
+{
+    isFacingRight = !isFacingRight;
+    Vector3 localScale = transform.localScale;
+    localScale.x *= -1f;
+    transform.localScale = localScale;
+
+}
 }
 
 

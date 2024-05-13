@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7586499870042581853}
   - component: {fileID: 4573985873529372533}
   - component: {fileID: 4954086115826636541}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Walls
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -46,8 +46,8 @@ Tilemap:
   - first: {x: 3, y: -4, z: 0}
     second:
       serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
+      m_TileIndex: 1
+      m_TileSpriteIndex: 1
       m_TileMatrixIndex: 0
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
@@ -65,15 +65,15 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 2
-    m_Data: {fileID: 11400000, guid: f2b4390255140894a8e8df1387529cdd, type: 2}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 5adfa29e432374a46a93e7216b6a444f, type: 2}
+  - m_RefCount: 1
+    m_Data: {fileID: 11400000, guid: 962d294fc6a9a8a49ba909c65083320e, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 2
-    m_Data: {fileID: 1116525225, guid: ed4edcc13cc60764181cc25a7679faf6, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
+  - m_RefCount: 1
+    m_Data: {fileID: 1507147604, guid: 1b9923011ec248c44812bc0ee2d85322, type: 3}
+  - m_RefCount: 1
+    m_Data: {fileID: -702441514, guid: 1b9923011ec248c44812bc0ee2d85322, type: 3}
   m_TileMatrixArray:
   - m_RefCount: 2
     m_Data:
@@ -162,7 +162,7 @@ TilemapRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0, y: 0.25, z: 0}
+  m_ChunkCullingBounds: {x: 0.03125, y: 0.03125, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
