@@ -29,6 +29,8 @@ public class LevelGenerator : MonoBehaviour
 
 
     [SerializeField] private Transform CoinGrid;
+
+    [SerializeField] private Transform TheFloor;
     
 
     private GameObject player;
@@ -110,6 +112,7 @@ public class LevelGenerator : MonoBehaviour
             count += 14;
             SpawnLevelPart(new Vector3(count, 0));
             LevelFiller(new Vector3(count, 0));
+           // Debug.Log(new Vector3(count, 0));
             enemyFiller(new Vector3(count, 0));
         }
     }
@@ -117,18 +120,21 @@ public class LevelGenerator : MonoBehaviour
     private void SpawnLevelPart(Vector3 spawnPosition){
         if (exitPosition == 0) {
             int randomChoice = Random.Range(0, 3);
+        //    Instantiate(TheFloor, spawnPosition, Quaternion.identity);
             Instantiate(CoinGrid, spawnPosition, Quaternion.identity);
             Instantiate(bottomstart[randomChoice], spawnPosition, Quaternion.identity);
             exitPosition = randomChoice; //position of chosen in list
         }
         else if (exitPosition == 1) {
             int randomChoice = Random.Range(0, 3);
+         //   Instantiate(TheFloor, spawnPosition, Quaternion.identity);
             Instantiate(CoinGrid, spawnPosition, Quaternion.identity);
             Instantiate(middlestart[randomChoice], spawnPosition, Quaternion.identity);
             exitPosition = randomChoice; //position of chosen
         }
         else if (exitPosition == 2) {
             int randomChoice = Random.Range(0, 3);
+        //    Instantiate(TheFloor, spawnPosition, Quaternion.identity);
             Instantiate(CoinGrid, spawnPosition, Quaternion.identity);
             Instantiate(topstart[randomChoice], spawnPosition, Quaternion.identity);
             exitPosition = randomChoice; //position of chosen
@@ -147,7 +153,6 @@ public class LevelGenerator : MonoBehaviour
         
         if (randomChoice2 > (0.33 + 0.5 * (score.currentScore/999))) {
             Instantiate(levelPartList[listCount], spawnPosition, Quaternion.identity);
-            Debug.Log(0.33 + 0.5 * (score.currentScore/999));
         }
         }
     }

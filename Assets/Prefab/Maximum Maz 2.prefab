@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7586499870042581853}
   - component: {fileID: 4573985873529372533}
   - component: {fileID: 4954086115826636541}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Walls
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -238,7 +238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 68597363837524334}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: EndPosition
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -272,7 +272,7 @@ GameObject:
   - component: {fileID: 7115145569990090478}
   - component: {fileID: -7093701157210690298}
   - component: {fileID: 3087801255165006385}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Maximum Maz 2
   m_TagString: Wall
   m_Icon: {fileID: 0}

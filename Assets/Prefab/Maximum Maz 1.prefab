@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7586499870042581853}
   - component: {fileID: 4573985873529372533}
   - component: {fileID: 4954086115826636541}
-  m_Layer: 7
+  m_Layer: 0
   m_Name: Walls
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -378,6 +378,18 @@ PrefabInstance:
     - target: {fileID: 1592065295409992993, guid: f7da84b9de3b9654d8daef0d180aefc2, type: 3}
       propertyPath: m_Name
       value: UpdatedBadGuy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1592065295409992993, guid: f7da84b9de3b9654d8daef0d180aefc2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1985336791496729671, guid: f7da84b9de3b9654d8daef0d180aefc2, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5397418511223144364, guid: f7da84b9de3b9654d8daef0d180aefc2, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8801215424792315309, guid: f7da84b9de3b9654d8daef0d180aefc2, type: 3}
       propertyPath: m_LocalPosition.x

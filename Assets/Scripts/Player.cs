@@ -42,7 +42,7 @@ void Update()
 {
     horizontalInput = Input.GetAxis("Horizontal");
     verticalInput = Input.GetAxis("Vertical");
-    Debug.Log(horizontalInput);
+   // Debug.Log(horizontalInput);
     if (!isFacingRight && horizontalInput > 0)
     {
         Flip();
