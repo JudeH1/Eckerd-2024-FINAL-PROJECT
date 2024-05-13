@@ -30,7 +30,14 @@ void OnCollisionEnter2D(Collision2D other)
        if (other.gameObject.CompareTag("Wall"))
         {
             health.TakeDamage(1); // walls hurt now
+<<<<<<< Updated upstream
             //Debug.Log("pingas");
+=======
+            if (health.currentHealth <= 0){
+                DieDIEDIE();
+            }
+           // Debug.Log("pingas");
+>>>>>>> Stashed changes
         }
     }
 
@@ -56,6 +63,7 @@ void LateUpdate(){
         rb.AddForce(new Vector3(horizontalInput, verticalInput, 0.0f) * speed);
     }
 
+<<<<<<< Updated upstream
 public void Flip()
 {
     isFacingRight = !isFacingRight;
@@ -64,6 +72,12 @@ public void Flip()
     transform.localScale = localScale;
 
 }
+=======
+void DieDIEDIE(){
+    speed = 0.0f;
+}
+
+>>>>>>> Stashed changes
 }
 
 

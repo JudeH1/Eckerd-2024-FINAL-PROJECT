@@ -7,9 +7,11 @@ public class ScoreManager : MonoBehaviour
     public int currentScore;
     public int finalScore;
     public int maxScore = 999; 
+    public int highscore;
     // Start is called before the first frame update
     void Start()
     {
+        highscore = PlayerPrefs.GetInt("Highscore");
         currentScore = 0;
     }
 
@@ -30,5 +32,9 @@ public class ScoreManager : MonoBehaviour
     {
         finalScore += currentScore;
         currentScore = 0;
+        if (finalScore > highscore){
+        highscore = finalScore;
+        PlayerPrefs.SetInt ("Highscore", highscore);
+    }
     }
 }
