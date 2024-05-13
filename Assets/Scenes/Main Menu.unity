@@ -1410,8 +1410,8 @@ RectTransform:
   - {fileID: 244052662}
   - {fileID: 1219262679}
   - {fileID: 292664392}
-  - {fileID: 1304776446}
   - {fileID: 2146408807}
+  - {fileID: 1304776446}
   - {fileID: 221242223}
   - {fileID: 1181531557}
   m_Father: {fileID: 533797666}

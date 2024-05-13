@@ -6,6 +6,7 @@ using TMPro;
 public class HighScoreDisplay : MonoBehaviour
 {
     public TMP_Text HighScore;
+    [SerializeField]private int scoreDisplay = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,6 +16,8 @@ public class HighScoreDisplay : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HighScore.text = PlayerPrefs.GetInt("Highscore").ToString();
+        scoreDisplay =  PlayerPrefs.GetInt("Highscore");
+        Debug.Log(scoreDisplay);
+        HighScore.text = scoreDisplay.ToString();
     }
 }
