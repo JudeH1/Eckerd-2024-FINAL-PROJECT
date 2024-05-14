@@ -151,7 +151,7 @@ public class LevelGenerator : MonoBehaviour
         float randomChoice2 = Random.Range(0.0f, 1.0f);
        // int randomChoice3 = Random.Range(0, 5);
         
-        if (randomChoice2 > (0.33 + 0.5 * (score.currentScore/999))) {
+        if (randomChoice2 < (0.33 + 0.5 * (score.currentScore/999))) {
             Instantiate(levelPartList[listCount], spawnPosition, Quaternion.identity);
         }
         }
@@ -170,8 +170,8 @@ public class LevelGenerator : MonoBehaviour
         {
         float randomChoice2 = Random.Range(0.0f, 1.0f);
         int randomChoice3 = Random.Range(0, 2);
-        if (randomChoice2 > (0.33 + 0.5 * (score.currentScore/999))) {
-            Instantiate(enemyList[randomChoice3], (spawnPosition + enemyPlacementList[listCount2]), Quaternion.identity);
+        if (randomChoice2 < (0.33 + 0.5 * (score.currentScore/999))) {
+            Instantiate(enemyList[randomChoice3], (spawnPosition + enemyPlacementList[listCount2]), enemyList[randomChoice3].transform.rotation);
         }
         }
 

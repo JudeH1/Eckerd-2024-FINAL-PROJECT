@@ -191,6 +191,9 @@ public class PatrolBadGuy : MonoBehaviour
       {
         health.TakeDamage(1); //hopefully this doesnt repeat, might need to give player invulnerability period anyways
       }
+      if (collision.gameObject.CompareTag("WallOfDeath")){
+            Destroy(gameObject); // kills it if wall touches it
+        }
     }
 
     void OnTriggerExit2D(Collider2D collision) // might need to change to be for walls only
