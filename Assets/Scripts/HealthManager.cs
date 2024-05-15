@@ -9,6 +9,7 @@ public class HealthManager : MonoBehaviour
     public float currentHealth;
     private ScoreManager score;
     private GameObject player;
+    private HealthManager health;
 
     // Start is called before the first frame update
     void Start()

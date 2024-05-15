@@ -6,7 +6,7 @@ using UnityEngine;
 public class WallofDeath : MonoBehaviour
 {
     public ScoreManager score;
-    public float baseSpeed = 1.0f;
+    public float baseSpeed = 2.0f;
     public float speed = 0f;
     public GameObject player;
     private HealthManager health;
@@ -22,11 +22,14 @@ public class WallofDeath : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (health.currentHealth > 0){
         rubberBand();
        // Debug.Log(speed);
         // need to tweak this function to make it speed up at a good rate 
-        // but it does very slowly speed up to a theoretical double speed with max score
-        transform.Translate(Vector3.right * (baseSpeed + baseSpeed * (score.currentScore/999) + speed) * Time.deltaTime);
+        // but it does very slowly speed up to a theoretical double speed with TOTAL score of 9999
+        // this should make 9999 a theoretical limit on TOTAL score
+        transform.Translate(Vector3.right * (baseSpeed + baseSpeed * (score.finalScore/9999) + speed) * Time.deltaTime);
+        }
     }
 
     private void rubberBand() // speeds up wall of death if player is getting too far ahead
@@ -51,5 +54,10 @@ public class WallofDeath : MonoBehaviour
         {
             health.TakeDamage(9999); //like to die instantly
         }
+    }
+
+    public void JumpForward()
+    {
+
     }
 }

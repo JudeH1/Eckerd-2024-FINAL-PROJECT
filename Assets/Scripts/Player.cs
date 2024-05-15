@@ -29,7 +29,7 @@ void OnCollisionEnter2D(Collision2D other)
     {
        if (other.gameObject.CompareTag("Wall"))
         {
-            health.TakeDamage(1); // walls hurt now
+          //  health.TakeDamage(1); // walls hurt now
             if (health.currentHealth <= 0){
                 DieDIEDIE();
             }
