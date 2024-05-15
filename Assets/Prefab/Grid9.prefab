@@ -48,7 +48,11 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 7
       m_TileSpriteIndex: 6
+<<<<<<< Updated upstream
       m_TileMatrixIndex: 0
+=======
+      m_TileMatrixIndex: 2
+>>>>>>> Stashed changes
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -178,7 +182,11 @@ Tilemap:
       serializedVersion: 2
       m_TileIndex: 7
       m_TileSpriteIndex: 6
+<<<<<<< Updated upstream
       m_TileMatrixIndex: 0
+=======
+      m_TileMatrixIndex: 1
+>>>>>>> Stashed changes
       m_TileColorIndex: 0
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
@@ -460,7 +468,11 @@ Tilemap:
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 881f859edc2b7e0468c107a909d3552f, type: 2}
   - m_RefCount: 2
+<<<<<<< Updated upstream
     m_Data: {fileID: 11400000, guid: 180e4b25fd64ce345b5665a12bf267e9, type: 2}
+=======
+    m_Data: {fileID: 11400000, guid: fa476294eb0db8645ae1b4ae193f1924, type: 2}
+>>>>>>> Stashed changes
   - m_RefCount: 1
     m_Data: {fileID: 11400000, guid: 5adfa29e432374a46a93e7216b6a444f, type: 2}
   m_TileSpriteArray:
@@ -477,13 +489,17 @@ Tilemap:
   - m_RefCount: 0
     m_Data: {fileID: 0}
   - m_RefCount: 2
+<<<<<<< Updated upstream
     m_Data: {fileID: -481250701, guid: 1b9923011ec248c44812bc0ee2d85322, type: 3}
+=======
+    m_Data: {fileID: 1583299292, guid: 1b9923011ec248c44812bc0ee2d85322, type: 3}
+>>>>>>> Stashed changes
   - m_RefCount: 1
     m_Data: {fileID: 1471430191, guid: 1b9923011ec248c44812bc0ee2d85322, type: 3}
   - m_RefCount: 1
     m_Data: {fileID: 1507147604, guid: 1b9923011ec248c44812bc0ee2d85322, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 40
+  - m_RefCount: 38
     m_Data:
       e00: 1
       e01: 0
@@ -491,6 +507,42 @@ Tilemap:
       e03: 0
       e10: 0
       e11: 1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - m_RefCount: 1
+    m_Data:
+      e00: -1
+      e01: 0
+      e02: 0
+      e03: 0
+      e10: 0
+      e11: -1
+      e12: 0
+      e13: 0
+      e20: 0
+      e21: 0
+      e22: 1
+      e23: 0
+      e30: 0
+      e31: 0
+      e32: 0
+      e33: 1
+  - m_RefCount: 1
+    m_Data:
+      e00: 0
+      e01: -1
+      e02: 0
+      e03: 0
+      e10: 1
+      e11: 0
       e12: 0
       e13: 0
       e20: 0
