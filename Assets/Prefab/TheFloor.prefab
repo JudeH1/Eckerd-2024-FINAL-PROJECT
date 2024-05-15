@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8411797414506152538}
   - component: {fileID: 2622186849401368424}
   - component: {fileID: 8989222427266293115}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Floor
   m_TagString: Wall
   m_Icon: {fileID: 0}
@@ -1842,7 +1842,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 68597363837524334}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EndPosition
   m_TagString: Untagged
   m_Icon: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000, type: 0}
@@ -1875,7 +1875,7 @@ GameObject:
   - component: {fileID: 5036767919226680234}
   - component: {fileID: 7115145569990090478}
   - component: {fileID: 3510227666748937846}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TheFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -9,6 +9,7 @@ using static UnityEngine.GraphicsBuffer;
 
 public class PatrolBadGuy : MonoBehaviour
 {
+    public GameOver UIstuff;
     public GameObject player;
 
     public float viewRadius;
@@ -46,6 +47,8 @@ public class PatrolBadGuy : MonoBehaviour
     private HealthManager health;
     public Transform bulletLaunchPos;
 
+    public string difficulty;
+
     private enum State {
         Move,
         Turn,
@@ -63,6 +66,8 @@ public class PatrolBadGuy : MonoBehaviour
         targetAngleTwo = Quaternion.Euler(0, 0, angleTwo);
         targetRotation = transform.rotation;
         rb2d = GetComponent<Rigidbody2D>();
+        difficulty = "Medium";
+        //difficulty = UIstuff.Whereever we store the difficulties
         state = State.Move;
     }
 
@@ -115,7 +120,10 @@ public class PatrolBadGuy : MonoBehaviour
                 Vector3 directionToPlayer = (player.transform.position - transform.position);
                 float angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
                 rb2d.rotation = angleToPlayer-90;
-                //Shoot(); commented this out for now
+                if (difficulty == "Medium")
+                {
+                    Shoot();
+                }
                 break;
 
         
