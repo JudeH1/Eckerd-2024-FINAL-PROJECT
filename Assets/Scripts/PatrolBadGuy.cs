@@ -28,6 +28,8 @@ public class PatrolBadGuy : MonoBehaviour
 
     private float rotateCount = 0; 
 
+    private float firerate = 1;
+
     private float timer;
 
     bool currentlyColliding;
@@ -47,7 +49,7 @@ public class PatrolBadGuy : MonoBehaviour
     private HealthManager health;
     public Transform bulletLaunchPos;
 
-    public string difficulty;
+    public int difficulty;
 
     private enum State {
         Move,
@@ -66,9 +68,12 @@ public class PatrolBadGuy : MonoBehaviour
         targetAngleTwo = Quaternion.Euler(0, 0, angleTwo);
         targetRotation = transform.rotation;
         rb2d = GetComponent<Rigidbody2D>();
-        difficulty = "Medium";
-        //difficulty = UIstuff.Whereever we store the difficulties
         state = State.Move;
+        if (difficulty == 2) // difficulty 2 = medium
+        {
+            moveSpeed = moveSpeed * 1.5f;
+            firerate = firerate * .75f;
+        }
     }
 
 
@@ -120,7 +125,8 @@ public class PatrolBadGuy : MonoBehaviour
                 Vector3 directionToPlayer = (player.transform.position - transform.position);
                 float angleToPlayer = Mathf.Atan2(directionToPlayer.y, directionToPlayer.x) * Mathf.Rad2Deg;
                 rb2d.rotation = angleToPlayer-90;
-                if (difficulty == "Medium")
+                difficulty = PlayerPrefs.GetInt("Difficulty");
+                if (difficulty >= 2)
                 {
                     Shoot();
                 }
@@ -220,8 +226,11 @@ public class PatrolBadGuy : MonoBehaviour
     void Shoot()
     {
         timer += Time.deltaTime;
+        if (difficulty >= 2){
+            firerate = .5f;
+        }
 
-        if (timer > 1)
+        if (timer > firerate)
         {
             timer = 0;
             Instantiate(bullet, bulletLaunchPos.position, Quaternion.identity);

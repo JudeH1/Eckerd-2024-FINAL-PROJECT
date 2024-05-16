@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -10,6 +11,7 @@ private float horizontalInput;
 private HealthManager health;
 private float verticalInput;
 public float speed = 10.0f;
+public int difficulty;
 private Rigidbody2D rb;
 // below is a diagram for direction
 // ACTUALLY NEVER MIND LETS NOT USE THAT
@@ -23,17 +25,21 @@ void Start ()
    rb = GetComponent<Rigidbody2D>();
    gameObject.tag = "Player";
    health = GetComponent<HealthManager>();
+   //difficulty = PlayerPrefs.GetInt("Difficulty");
 }
 
 void OnCollisionEnter2D(Collision2D other)
     {
+        difficulty = PlayerPrefs.GetInt("Difficulty");
        if (other.gameObject.CompareTag("Wall"))
         {
-          //  health.TakeDamage(1); // walls hurt now
             if (health.currentHealth <= 0){
                 DieDIEDIE();
             }
-           // Debug.Log("pingas");
+            if (difficulty == 3){
+                health.TakeDamage(1); // walls hurt now
+            }
+            Debug.Log(difficulty);
         }
     }
 
@@ -51,7 +57,7 @@ void Update()
     {
         Flip();
     }
-   
+    difficulty = PlayerPrefs.GetInt("Difficulty");
 }
 
 

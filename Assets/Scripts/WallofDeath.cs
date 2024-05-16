@@ -11,12 +11,19 @@ public class WallofDeath : MonoBehaviour
     public GameObject player;
     private HealthManager health;
 
+    private string difficulty;
+
     // Start is called before the first frame update
     void Start()
     {
+        difficulty = PlayerPrefs.GetString("difficulty");
         player =  GameObject.FindGameObjectWithTag("Player");
         health = player.GetComponent<HealthManager>();
         score = player.GetComponent<ScoreManager>();
+        if (difficulty == "Medium")
+        {
+            baseSpeed = baseSpeed * 2;
+        }
     }
 
     // Update is called once per frame

@@ -7,13 +7,19 @@ public class ScoreManager : MonoBehaviour
     public int currentScore;
     public int finalScore;
     public int maxScore = 999; 
-    public int highscore = 0;
+    public int Easyhighscore = 0;
+    public int Mediumhighscore = 0;
+    public int Hardhighscore = 0;
     private HealthManager health;
     private GameObject player;
+
+    private int difficulty;
     // Start is called before the first frame update
     void Start()
     {
-        highscore = PlayerPrefs.GetInt("Highscore");
+        Easyhighscore = PlayerPrefs.GetInt("EasyHighscore");
+        Mediumhighscore = PlayerPrefs.GetInt("MediumHighscore");
+        Hardhighscore = PlayerPrefs.GetInt("HardHighscore");
         player = GameObject.FindGameObjectWithTag("Player");
         currentScore = 0;
         health = player.GetComponent<HealthManager>();
@@ -31,6 +37,7 @@ public class ScoreManager : MonoBehaviour
     
     public void UpdateScore(int score)
     {
+        difficulty = PlayerPrefs.GetInt("Difficulty");
         currentScore += score;
         if (currentScore % 200 == 0){ // gives health for every 200 points gained without losing hp
         if (health.currentHealth < health.maxHealth){
@@ -48,10 +55,32 @@ public class ScoreManager : MonoBehaviour
     {
         finalScore += currentScore;
         currentScore = 0;
-        if (finalScore > highscore){
-        Debug.Log(finalScore);
-        highscore = finalScore;
-        PlayerPrefs.SetInt ("Highscore", highscore);
+        if (difficulty == 1)
+        {
+            if (finalScore > Easyhighscore)
+            {
+                Debug.Log(finalScore);
+                Easyhighscore = finalScore;
+                PlayerPrefs.SetInt ("EasyHighscore", Easyhighscore);
+            }
+        }
+        if (difficulty == 2)
+        {
+            if (finalScore > Mediumhighscore)
+            {
+                Debug.Log(finalScore);
+                Mediumhighscore = finalScore;
+                PlayerPrefs.SetInt ("MediumHighscore", Mediumhighscore);
+            }
+        }
+        if (difficulty == 3)
+        {
+            if (finalScore > Hardhighscore)
+            {
+                Debug.Log(finalScore);
+                Hardhighscore = finalScore;
+                PlayerPrefs.SetInt ("HardHighscore", Hardhighscore);
+            }
+        }
     }
-}
 }

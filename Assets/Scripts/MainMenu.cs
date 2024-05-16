@@ -12,4 +12,25 @@ public class MainMenu : MonoBehaviour
     public void exitGame(){
         Application.Quit();
     }
+    public void Easy(int val)
+    {
+        if(val == 0)
+        {
+            PlayerPrefs.SetInt("Difficulty", 1);
+        }
+    }
+    public void Medium(int val)
+    {
+        if (val == 1)
+        {
+            PlayerPrefs.SetInt("Difficulty", 2);
+        }
+    }
+    public void Hard(int val)
+    {
+        if (val == 2)
+        {
+            PlayerPrefs.SetInt("Difficulty", 3);
+        }
+    }
 }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthManager : MonoBehaviour
 {
-    public float maxHealth = 3;
+    public float maxHealth = 6;
 
     public float currentHealth;
     private ScoreManager score;
@@ -23,14 +23,6 @@ public class HealthManager : MonoBehaviour
     {
         currentHealth -= damage;
         score.ResetScore(0); // loses streak
-        if (currentHealth > 0)
-        {
-            //playerHurt update
-        }
-        else
-        {
-            //player Dead
-        }
     }
 
     public void Heal(int healAmount)
